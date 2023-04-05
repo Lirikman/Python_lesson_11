@@ -1,4 +1,4 @@
-class Person():
+class Person:
     def __init__(self, name, age, post):
         self.name = name
         self.age = age
@@ -44,6 +44,23 @@ class Person():
     def __setstate__(self, state):
         self.__dict__ = state
 
+    @staticmethod
+    def stat_method_ex(name):
+        if name == person_1.name:
+            return 1
+        return 0
+
+    @classmethod
+    def class_method_ex(cls):
+        name_list = ['Dima', 'Petya', 'Andrey', 'Slava', 'Kseniya', 'Diana', 'Nastya', 'Tolya', 'Sonya', 'Ura']
+        age_list = [23, 30, 32, 40, 43, 37, 34, 25, 39, 28]
+        post_list = ['manager', 'financier', 'consultant', 'director', 'general engineer', 'developer',
+                     'security guard', 'accountant', 'linguist', 'clerk']
+        person_list = []
+        for i in range(10):
+            person_list.append(cls(name_list[i], age_list[i], post_list[i]))
+        return person_list
+
 
 if __name__ == '__main__':
 
@@ -66,3 +83,11 @@ if __name__ == '__main__':
     print(person_1 + 'consultant')
 
     print(int(person_1))
+
+    list_ex = Person.class_method_ex()
+    print(list_ex)
+
+    for i in range(10):
+        print(list_ex[i])
+
+    print(Person.stat_method_ex('Ivan'))
